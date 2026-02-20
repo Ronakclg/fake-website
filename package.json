@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "npx vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "node -e \"const fs=require('fs');const p='node_modules/.bin/vite';try{fs.chmodSync(p,'755');}catch(e){}\""
   },
   "engines": {
     "node": "18.x"
