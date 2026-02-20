@@ -1,0 +1,230 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+    background-color: #F5F5F5;
+    border-bottom: 2.5px solid #e5e5e5;
+    padding: 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    padding: -5.5px 30px 10px 0;
+    margin: 0 auto;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+    text-decoration: none;
+}
+
+.logo {
+    width: 310px;
+    height: 58.5px;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    font-family: "Source Serif Pro", Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+    letter-spacing: 0.3px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.signin-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    padding: 6px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.signin-btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.signin-btn:active {
+    transform: scale(0.98);
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 60px 40px;
+}
+
+.main-heading {
+    font-size: 25px;
+    font-weight: 500;
+    color: #333333;
+    margin-top: 30px;
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 600px;
+}
+
+.doc-link {
+    font-size: 16px;
+    font-weight: 700;
+    color: #8b1f1f;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    line-height: 1.4;
+}
+
+.doc-link:hover {
+    color: #a02626;
+    text-decoration: underline;
+}
+
+.doc-link:active {
+    color: #6b1818;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #ffffff;
+    margin-top: auto;
+}
+
+.footer-top {
+    background-color: #f5f5f5;
+    padding: 16px 40px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.footer-top p {
+    font-size: 12px;
+    color: #666666;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    background-color: #8b1f1f;
+    padding: 12px 40px;
+    color: #ffffff;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 12px 20px;
+    }
+
+    .header-container {
+        gap: 12px;
+    }
+
+    .logo-placeholder {
+        width: 40px;
+        height: 40px;
+    }
+
+    .iit-madras-text {
+        font-size: 18px;
+    }
+
+    .main-content {
+        padding: 40px 20px;
+    }
+
+    .main-heading {
+        font-size: 28px;
+        margin-bottom: 24px;
+    }
+
+    .doc-link {
+        font-size: 14px;
+    }
+
+    .footer-top,
+    .footer-bottom {
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 10px 15px;
+    }
+
+    .iit-madras-text {
+        font-size: 16px;
+    }
+
+    .signin-btn {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+
+    .main-content {
+        padding: 30px 15px;
+    }
+
+    .main-heading {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .links-container {
+        gap: 16px;
+    }
+
+    .doc-link {
+        font-size: 13px;
+    }
+}

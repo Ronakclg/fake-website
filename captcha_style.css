@@ -1,0 +1,98 @@
+
+/* Custom CAPTCHA Styles */
+.captcha-container {
+    background-color: #f9f9f9;
+    border: 1px solid #d3d3d3;
+    border-radius: 3px;
+    box-shadow: 0 0 4px 1px rgba(0,0,0,0.08); /* Added shadow behind captcha */
+    width: 300px; /* Standard width */
+    height: 74px;
+    display: flex !important; /* Force display */
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    margin-bottom: 20px;
+    /* Position it relative to container if needed, but user has specific margin on parent */
+}
+
+.captcha-left {
+    display: flex;
+    align-items: center;
+}
+
+.captcha-checkbox {
+    width: 28px;
+    height: 28px;
+    background-color: white;
+    border: 2px solid #c1c1c1;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    transition: all 0.3s ease;
+}
+
+.captcha-checkbox:hover {
+    border-color: #b2b2b2;
+}
+
+.captcha-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+}
+
+.captcha-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+}
+
+.captcha-text {
+    color: #555;
+    font-size: 10px;
+    margin-top: 2px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #4285f4; /* Google Blue */
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Checkmark */
+.checkmark {
+    display: none;
+    width: 28px;
+    height: 28px;
+    position: relative;
+}
+
+.checkmark:after {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: solid #0f9d58;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}

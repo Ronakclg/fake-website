@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom CAPTCHA Demo</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Custom CAPTCHA Styles */
+        .captcha-container {
+            background-color: #f9f9f9;
+            border: 1px solid #d3d3d3;
+            border-radius: 3px;
+            width: 300px;
+            height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            margin: 0 auto 20px auto;
+            position: relative;
+        }
+
+        .captcha-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .captcha-checkbox {
+            width: 28px;
+            height: 28px;
+            background-color: white;
+            border: 2px solid #c1c1c1;
+            border-radius: 2px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .captcha-checkbox:hover {
+            border-color: #b2b2b2;
+        }
+
+        .captcha-label {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .captcha-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .captcha-icon {
+            width: 32px;
+            height: 32px;
+            background-image: url('https://www.gstatic.com/recaptcha/api2/logo_48.png');
+            background-size: 32px;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+        }
+
+        .captcha-text {
+            color: #555;
+            font-size: 10px;
+            margin-top: 2px;
+            text-align: center;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Checkmark */
+        .checkmark {
+            display: none;
+            width: 28px;
+            height: 28px;
+            position: relative;
+        }
+
+        .checkmark:after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 2px;
+            width: 8px;
+            height: 16px;
+            border: solid #0f9d58;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #a0332d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            opacity: 0.6;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .submit-btn:hover {
+            background-color: #8a2b26;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return handleSubmit(event)">
+            <!-- Custom CAPTCHA Component -->
+            <div class="captcha-container">
+                <div class="captcha-left">
+                    <div class="captcha-checkbox" id="captchaBox" onclick="verifyCaptcha()">
+                        <div class="spinner" id="spinner"></div>
+                        <div class="checkmark" id="checkmark"></div>
+                    </div>
+                    <span class="captcha-label" onclick="verifyCaptcha()">I'm not a robot</span>
+                </div>
+                
+                <div class="captcha-logo">
+                    <!-- Simple CSS-only reCAPTCHA logo approximation or image -->
+                    <div class="captcha-icon"></div>
+                    <div class="captcha-text">reCAPTCHA<br><span style="font-size: 8px;">Privacy - Terms</span></div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Sign In</button>
+        </form>
+    </div>
+
+    <script>
+        let isVerified = false;
+        let isVerifying = false;
+
+        function verifyCaptcha() {
+            if (isVerified || isVerifying) return; // Prevent multiple clicks
+
+            isVerifying = true;
+            const checkbox = document.getElementById('captchaBox');
+            const spinner = document.getElementById('spinner');
+            const checkmark = document.getElementById('checkmark');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // 1. Show Spinner
+            spinner.style.display = 'block';
+
+            // 2. Simulate Network Delay (1.5 seconds)
+            setTimeout(() => {
+                // 3. Hide Spinner, Show Checkmark
+                spinner.style.display = 'none';
+                checkmark.style.display = 'block';
+                
+                // 4. Update Border Color
+                checkbox.style.border = 'none'; // Checkmark covers it or remove border
+
+                // 5. Update State
+                isVerified = true;
+                isVerifying = false;
+
+                // 6. Enable Submit Button
+                submitBtn.classList.add('active');
+            }, 1500);
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            if (isVerified) {
+                alert('Verification Successful! Form Submitted.');
+                // Add your actual form submission logic here
+            } else {
+                alert('Please verify you are not a robot.');
+            }
+        }
+    </script>
+</body>
+</html>

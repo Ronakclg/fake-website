@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Document Verification - IIT Madras</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="captcha_style.css">
+    <!-- Removed Google script to fix error -->
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <div class="logo-section">
+                    <img src="images/IITM-Logo-Degree-in-DS.png" alt="IIT Madras Logo" class="logo">
+                    <span class="logo-text"></span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="signin-btn">SIGN IN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="content-section">
+            <h1 class="page-heading">Student Document Verification</h1>
+            
+            <!-- Verification Card with Google reCAPTCHA -->
+            <div class="verification-card">
+                <form id="verification-form">
+                    <div class="captcha-section">
+                        <!-- Custom CAPTCHA Component replacing Google reCAPTCHA -->
+                        <div class="captcha-container">
+                            <div class="captcha-left">
+                                <div class="captcha-checkbox" id="captchaBox">
+                                    <div class="spinner" id="spinner"></div>
+                                    <div class="checkmark" id="checkmark"></div>
+                                </div>
+                                <span class="captcha-label">I'm not a robot</span>
+                            </div>
+                            <div class="captcha-logo">
+                                <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" width="32" height="32" style="opacity: 0.5;">
+                                <div class="captcha-text">reCAPTCHA<br><span style="font-size: 8px;">Privacy - Terms</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="verify-btn" id="verify-btn" disabled>Verify and Download</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; IIT Madras. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
