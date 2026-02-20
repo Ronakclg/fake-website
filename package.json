@@ -11,6 +11,7 @@
   "engines": {
     "node": "24.x"
   },
+  "type": "module",
   "devDependencies": {
     "vite": "^5.4.21"
   }
