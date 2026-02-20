@@ -9,7 +9,7 @@
     "postinstall": "node -e \"const fs=require('fs');const p='node_modules/.bin/vite';try{fs.chmodSync(p,'755');}catch(e){}\""
   },
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   },
   "devDependencies": {
     "vite": "^5.4.21"
